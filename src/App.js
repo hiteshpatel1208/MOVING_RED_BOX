@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import Greenbox from "./Components/GreenBox";
+import Redbox from "./Components/RedBox";
+
 import './App.css';
+import { useState } from "react";
 
 function App() {
+
+  const [moveCar, setMoveCar] = useState(false);
+
+  const handleMove = () => {
+    setMoveCar(prevState => !prevState);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Greenbox>
+        <div onClickCapture={handleMove}>
+          <Redbox moveCar={moveCar} />
+        </div>
+      </Greenbox>
     </div>
   );
 }
